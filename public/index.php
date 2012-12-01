@@ -8,4 +8,4 @@
 
 ini_set('display_errors', 1);
 
-defined('APPLICATON_PATH');
+defined('APPLICATION_PATH');
