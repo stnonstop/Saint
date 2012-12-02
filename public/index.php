@@ -9,3 +9,7 @@
 ini_set('display_errors', 1);
 
 defined('APPLICATION_PATH');
+
+
+
+echo 'index.php';
