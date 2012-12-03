@@ -11,6 +11,6 @@ class indexController extends saint\controller\abstractor
 
     public function indexAction()
     {
-        echo 'heyo';
+
     }
 }
