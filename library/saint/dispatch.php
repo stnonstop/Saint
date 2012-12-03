@@ -20,7 +20,13 @@ class dispatch
         $controllerClass = $controllerName . 'Controller';
         $actionMethod    = $actionName . 'Action';
 
-        $view = new view();
+        $view   = new view();
+        $config = new config();
+
+        if(! isset($config->route[$controllerName])) {
+            header::notFound();
+        }
+
 
         $controller = new $controllerClass($view, $router->getParams());
 

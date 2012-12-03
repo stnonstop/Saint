@@ -3,9 +3,65 @@
     <head>
         <title>Saint Framework Index Page</title>
         <meta charset="utf-8">
-        <link href="/css/bootstrap.min.css" media="screen" rel="stylesheet" />
+        <link href="/css/bootstrap.css" media="screen" rel="stylesheet" />
+        <style type="text/css">
+            body {
+                padding-top: 20px;
+                padding-bottom: 40px;
+            }
+
+                /* Custom container */
+            .container-narrow {
+                margin: 0 auto;
+                max-width: 700px;
+            }
+            .container-narrow > hr {
+                margin: 30px 0;
+            }
+
+                /* Main marketing message and sign up button */
+            .jumbotron {
+                margin: 60px 0;
+                text-align: center;
+            }
+            .jumbotron h1 {
+                font-size: 72px;
+                line-height: 1;
+            }
+            .jumbotron .btn {
+                font-size: 21px;
+                padding: 14px 24px;
+            }
+
+                /* Supporting marketing content */
+            .marketing {
+                margin: 60px 0;
+            }
+            .marketing p + h4 {
+                margin-top: 28px;
+            }
+        </style>
     </head>
     <body>
-        Merhaba (Hello)
+        <div class="container-narrow">
+            <div class="nav-header">
+                <ul class="nav nav-pills pull-right">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#">Download</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <h3 class="muted">saint framework</h3>
+            </div>
+
+            <div class="jumbotron">
+                <h1>Herkese merhaba (Hello to all)</h1>
+                <p class="lead"></p>
+                <p class="lead"> Saint PHP MVC Framework; <br />Size kolay ve hızlı php projeleri oluşturmanızı sağlıyor.</p>
+                <a href="#" class="btn btn-large btn-success">Hemen üye olun</a>
+            </div>
+
+            <hr />
+        </div>
     </body>
 </html>
