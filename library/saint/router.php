@@ -25,7 +25,7 @@ class router
      * Parameters
      * @var array
      */
-    protected $params;
+    protected $params = array();
 
     public function __construct(){
 

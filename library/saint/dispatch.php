@@ -12,7 +12,39 @@ class dispatch
     /**
      * @param $router router
      */
-    public static function dispatcher($router){
+    public static function dispatcher(router $router){
+
+        $controllerName = $router->getController();
+        $actionName     = $router->getAction();
+
+        $controllerClass = $controllerName . 'Controller';
+        $actionMethod    = $actionName . 'Action';
+
+        $view = new view();
+
+        $controller = new $controllerClass($view, $router->getParams());
+
+        if(is_callable(array($controller, $actionMethod)) == false){
+            $actionName     = 'index';
+            $actionMethod   = $actionName . 'Action';
+        }
+        //Execute Init Method
+        $controller->init();
+
+        //Execute Action Method
+        $controller->$actionMethod();
+
+        if($view->getRenderStatus()){
+            $viewFile = $view->getViewFile($controllerName, $actionName);
+            foreach($view->getVariables() AS $key => $value) {
+                $$key = $value;
+            }
+            include $viewFile;
+        }
+
+        //Execute Destroy Method
+        $controller->destroy();
+
 
     }
 }

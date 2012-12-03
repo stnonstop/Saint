@@ -24,7 +24,6 @@ set_include_path(implode(PATH_SEPARATOR,array(
 
 function saintAutoLoader($className){
     $classFile = str_replace('\\', DIRECTORY_SEPARATOR, ltrim($className, '\\')) . '.php';
-    echo $classFile . '-';
     require_once $classFile;
 }
 
