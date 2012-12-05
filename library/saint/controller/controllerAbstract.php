@@ -7,7 +7,7 @@
  * To change this template use File | Settings | File Templates.
  */
 namespace saint\controller;
-abstract class abstractor
+abstract class controllerAbstract
 {
     /**
      * @var \saint\view

@@ -13,4 +13,12 @@ class header
         header('HTTP/1.0 404 Not Found');
         exit;
     }
+
+    public static function redirect($url, $httpCode = null) {
+        if($httpCode == 301) {
+            header ('HTTP/1.1 301 Moved Permanently');
+        }
+        header("Location:" . $url );
+        exit;
+    }
 }

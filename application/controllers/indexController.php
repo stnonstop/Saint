@@ -6,7 +6,7 @@
  * Time: 02:00
  * To change this template use File | Settings | File Templates.
  */
-class indexController extends saint\controller\abstractor
+class indexController extends saint\controller\controllerAbstract
 {
 
     public function indexAction()
