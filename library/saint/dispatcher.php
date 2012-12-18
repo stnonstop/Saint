@@ -7,12 +7,14 @@
  * To change this template use File | Settings | File Templates.
  */
 namespace saint;
-class dispatch
+class dispatcher
 {
     /**
-     * @param $router router
+     * @param router $router
+     * @param config $config
+     * @param view $view
      */
-    public static function dispatcher(router $router){
+    public static function dispatch(router $router, config $config, view $view){
 
         $controllerName = $router->getController();
         $actionName     = $router->getAction();
@@ -20,15 +22,20 @@ class dispatch
         $controllerClass = $controllerName . 'Controller';
         $actionMethod    = $actionName . 'Action';
 
-        $view   = new view();
-        $config = new config();
-
         if(! isset($config->route[$controllerName])) {
             header::notFound();
         }
 
+        try {
+           $controller = new $controllerClass($view, $router->getParams());
+        } catch(\Exception $e) {
+            header::notFound();
+        }
 
-        $controller = new $controllerClass($view, $router->getParams());
+        if(($controller instanceof \saint\controller\controllerAbstract) === false){
+            header::notFound();
+        }
+
 
         if(is_callable(array($controller, $actionMethod)) == false){
             $actionName     = 'index';

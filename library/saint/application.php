@@ -15,11 +15,23 @@ class application
      */
     protected $router;
 
+    /**
+     * @var view
+     */
+    protected $view;
+
+    /**
+     * @var config
+     */
+    protected $config;
+
     public function __construct() {
         $this->router = new router();
+        $this->config = new config();
+        $this->view   = new view();
     }
 
     public function run(){
-        dispatch::dispatcher($this->router);
+        dispatcher::dispatch($this->router, $this->config, $this->view);
     }
 }

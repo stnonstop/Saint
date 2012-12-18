@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <title>Saint Framework Index Page</title>
+    <meta charset="utf-8">
+    <link href="/css/bootstrap.css" media="screen" rel="stylesheet" />
+    <style type="text/css">
+        .navbar-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            margin-top: 20px;
+            margin-bottom: -90px; /* Negative margin to pull up carousel. 90px is roughly margins and height of navbar. */
+        }
+    </style>
+</head>
+<body>
+<header id='header'>
+    <nav class="navbar-wrapper">
+        <div class="container">
+            <div class="navbar navbar-inverse">
+                <div class="navbar-inner">
+                    <a class="brand" href="#"> Aziz DURMAZ </a>
+                    <div class="pull-right">
+                        <ul class="nav">
+                            <li ><a href="/">Home <i>main page</i></a></li>
+                            <li class="dropdown active">
+                                <a href="/blog" class="dropdown-toggle" data-toggle="dropdown">Blog <i>my thoughts</i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/blog/dependecyInjection">Aziz</a></li>
+                                    <li class="last"><a href="/blog/dependecyInjection">Dependecy Injection</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/download">Download <i>my codes</i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/bootstrap.js"></script>
+</body>
+</html>

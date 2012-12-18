@@ -5,63 +5,138 @@
         <meta charset="utf-8">
         <link href="/css/bootstrap.css" media="screen" rel="stylesheet" />
         <style type="text/css">
-            body {
-                padding-top: 20px;
-                padding-bottom: 40px;
+            html,
+            body{
+                height: 100%;
             }
-
-                /* Custom container */
-            .container-narrow {
-                margin: 0 auto;
-                max-width: 700px;
+            #push,
+            #footer {
+                height: 60px;
             }
-            .container-narrow > hr {
-                margin: 30px 0;
+            #footer {
+                position: relative;
+                background-color: #f5f5f5;
             }
-
-                /* Main marketing message and sign up button */
-            .jumbotron {
-                margin: 60px 0;
-                text-align: center;
+            #wrap {
+                min-height: 100%;
+                height: auto !important;
+                height: 100%;
+                margin-top: 100px;
+                /* Negative indent footer by it's height */
+                margin: 0 auto -60px;
             }
-            .jumbotron h1 {
-                font-size: 72px;
-                line-height: 1;
+            .navbar-wrapper {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 10;
+                margin-top: 20px;
+                margin-bottom: -90px;
             }
-            .jumbotron .btn {
-                font-size: 21px;
-                padding: 14px 24px;
+            .carouselImg {
+                top: 0;
+                left: 0;
+                min-width: 100%;
+                height: 300px;
             }
-
-                /* Supporting marketing content */
-            .marketing {
-                margin: 60px 0;
+            @media (max-width: 979px) {
+                .carouselImg {
+                    height: 220px;
+                }
             }
-            .marketing p + h4 {
-                margin-top: 28px;
+            @media (max-width: 767px) {
+                #footer {
+                    margin-left: -20px;
+                    margin-right: -20px;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                }
+                .carouselImg {
+                    height: 180px;
+                }
+            }
+            .container .credit {
+                margin: 20px 0;
             }
         </style>
     </head>
     <body>
-        <div class="container-narrow">
-            <div class="nav-header">
-                <ul class="nav nav-pills pull-right">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Download</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
+        <header id='header'>
+            <nav class="navbar-wrapper ">
+                <div class="container">
+                    <div class="navbar navbar-inverse">
+                        <div class="navbar-inner">
+                            <a class="brand" href="#"> Aziz DURMAZ </a>
+                            <div class="pull-right">
+                                <ul class="nav">
+                                    <li class="active"><a href="/"><i class="icon-home"></i> Home</a></li>
+                                    <li class="dropdown">
+                                        <a href="/blog" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-pencil"></i> Blog</a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/blog/dependecyInjection">Aziz</a></li>
+                                            <li class="last"><a href="/blog/dependecyInjection">Dependecy Injection</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/download"><i class="icon-download"></i> Download</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <section id="wrap">
+            <img src="/img/italy.jpg" alt="" class="carouselImg">
+            <div class="container">
+                <br />
+                <ul class="breadcrumb">
+                    <li class="active">Home<span class="divider"></span></li>
                 </ul>
-                <h3 class="muted">saint framework</h3>
+                <div class="container-fluid">
+                    <div class="row-fluid">
+                        <div class="span9">
+                            <div class="page-header">
+                                <h1>St Nonstop</h1>
+                            </div>
+                            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut lacus purus, eget fermentum massa. Quisque lorem tellus, ornare ac consectetur et, vulputate et odio.
+                                Duis at rhoncus magna. Fusce a malesuada arcu. Vestibulum eget diam id ligula molestie accumsan vitae quis turpis. Mauris quis felis non diam dapibus blandit nec in velit. Sed adipiscing,
+                                diam eget egestas dapibus, metus elit ullamcorper leo, at lobortis lorem leo et lectus. Mauris sed felis non mi lobortis blandit eget et tellus. Duis sed ultrices dui. Nam malesuada dolor
+                                ligula. Fusce ac lacus vitae quam tempus tincidunt. Nullam et sapien non nisl ornare varius eu eu sapien.</p>
+                            <p class="lead">Donec at sapien non est accumsan viverra. Duis ultrices massa eu erat lacinia fermentum. Phasellus vestibulum semper lacus et sollicitudin. Vestibulum convallis mollis metus, eget mattis
+                                diam pretium vitae. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec eget sapien a augue faucibus suscipit vel vel nulla. Nam purus diam,
+                                suscipit at porta eget, ultricies vel neque. Vivamus nunc augue, commodo eu suscipit id, mattis et ipsum. Cras congue blandit consectetur. Aenean aliquam, eros a volutpat mollis, dolor
+                                est commodo tortor, nec lobortis elit odio sit amet turpis. Mauris pretium accumsan odio sit amet accumsan.</p>
+                            <p class="lead">Aliquam erat volutpat. Proin fermentum odio non lacus pulvinar nec auctor justo gravida. Sed condimentum mattis nulla, eget ultrices enim sodales at. Ut justo enim, sodales
+                                in dictum vitae, viverra a diam. Nullam velit elit, suscipit non sagittis elementum, vulputate vitae lacus. Aliquam ut nunc sem. Ut est nunc, ullamcorper eu auctor eget, facilisis a libero.
+                                Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In a nunc est, sed fringilla metus.</p>
+                        </div>
+                        <div class="span3">
+                            <div class="page-header">
+                                <h3>Son Yazılar...</h3>
+                            </div>
+                            <blockquote>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p><br>
+                                <p>orem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                                <p>orem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                                <p>orem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            </blockquote>
+                            <small>Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS.</small>
+                        </div>
+                    </div>
+                </div>
+                <div id="push"></div>
             </div>
+        </section>
 
-            <div class="jumbotron">
-                <h1>Herkese merhaba (Hello to all)</h1>
-                <p class="lead"></p>
-                <p class="lead"> Saint PHP MVC Framework; <br />Size kolay ve hızlı php projeleri oluşturmanızı sağlıyor.</p>
-                <a href="#" class="btn btn-large btn-success">Hemen üye olun</a>
+        <footer id="footer">
+            <div class="container">
+                <p class="muted credit">St.Nonstop : Aziz DURMAZ (Software Development Supervisor - GittiGidiyor Ebay)<span class="pull-right">2012</span></p>
             </div>
+        </footer>
 
-            <hr />
-        </div>
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+
     </body>
 </html>

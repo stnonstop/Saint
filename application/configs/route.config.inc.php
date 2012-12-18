@@ -6,4 +6,5 @@
  * Time: 03:11
  * To change this template use File | Settings | File Templates.
  */
-$routeConfig['index'] = true;
+$routeConfig['index']   = true;
+$routeConfig['blog']    = true;
