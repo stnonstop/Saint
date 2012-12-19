@@ -96,13 +96,13 @@
         </ul>
         <div class="container-fluid">
             <div class="row-fluid">
-                <div class="span9">
+                <div class="span9" id="Game">
                     <div class="page-header">
                         <h1>Oyun</h1>
                     </div>
                     <div class="span3 offset3"><button class="btn btn-warning btn-large" id="mix">Karıştır...</button></div><div class="span3"></div>
                     <div class="span9"><br /><hr/></div>
-                    <div class="span3"></div><div class="span3 offset3"></div>
+                    <div class="span9" id="Message"></div>
                     <div class="span9"><br /><hr/></div>
                     <div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="Ateş" name='element[0]'>Ateş</label></div>
                     <div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="Hava" name='element[1]'>Hava</label></div>
@@ -115,16 +115,6 @@
                         <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean a leo nec justo convallis malesuada ut sit amet nisi. Vestibulum nulla dui, lacinia et mollis ac, porttitor sed tellus.
                             Vestibulum vel lorem ac odio viverra eleifend. Vivamus ac fermentum enim. Phasellus sapien massa, pulvinar non scelerisque non, commodo et erat. Phasellus lacinia erat lacinia nibh mollis scelerisque.
                             Phasellus mauris dolor, suscipit id tincidunt ultrices, pharetra vel quam.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="span4">
-                        <div class="alert">
-                            <a class="close" data-dismiss="alert">×</a>
-                            <strong>Warning!</strong> Best check yo self, you're not looking too good.
-                        </div>
                     </div>
                 </div>
             </div>
@@ -158,9 +148,17 @@
             $.ajax({
                 type:"POST",
                 data:{element1:firstElement, element2:secondElement},
+                dataType:"json",
                 url:"/game/mixajax",
                 success:function(data) {
-                    alert(data);
+                    $("#Message").html('');
+                    if(data.success){
+
+                        $("#Game").append('<div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="'+data.result+'">'+data.result+'</label></div>');
+                        $("#Message").append('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><strong>Tebrikler!</strong> Tebrikler <strong>'+data.result+'</strong> elde ettiniz.</div>');
+                    } else {
+                        $("#Message").append('<div class="alert alert-fail"><a class="close" data-dismiss="alert">×</a><strong>Warning!</strong> Hiç bir şey bulmadınız</div>');
+                    }
                 }
             })
         })

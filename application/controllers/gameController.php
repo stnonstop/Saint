@@ -18,10 +18,16 @@ class gameController extends saint\controller\controllerAbstract
         $this->view->setNoRender();
         $elementGame = new \models\elementGame();
         $mixtureResult = $elementGame->mixThem($this->userParams['element1'], $this->userParams['element2']);
+        $result = array();
         if($mixtureResult === false){
-            echo 'beceriksiz....';
+            $result['success'] = false;
         } else {
-            echo $this->userParams['element1'].' ile '.$this->userParams['element2'] . ' birleştirip ' . $mixtureResult['result'] . ' elde ettiniz.';
+            $result['success'] = true;
+            $result['result'] = $mixtureResult['result'];
+            $result['firstElement'] = $mixtureResult['search'][0];
+            $result['firstElement'] = $mixtureResult['search'][1];
+            //echo $this->userParams['element1'].' ile '.$this->userParams['element2'] . ' birleştirip ' . $mixtureResult['result'] . ' elde ettiniz.';
         }
+        echo json_encode($result);
     }
 }
