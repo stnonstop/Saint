@@ -47,6 +47,10 @@ class view
         return $this->viewRender;
     }
 
+    public function setNoRender(){
+        $this->viewRender = false;
+    }
+
     /**
      * Returns View File
      * @param $controllerName string

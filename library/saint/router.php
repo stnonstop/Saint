@@ -10,52 +10,64 @@ namespace saint;
 class router
 {
     /**
+     * @var array();
+     */
+    private $routeParts;
+    /**
      * Controller Name
      * @var string
      */
-    protected $controller;
+    private $controller;
 
     /**
      * Action Name
      * @var string
      */
-    protected $action;
+    private $action;
 
     /**
      * Parameters
      * @var array
      */
-    protected $params = array();
+    private $params = array();
 
     public function __construct(){
 
         $route = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
         if($route){
-            $routeParts = explode('/', $route);
-
-            $controllerNameOrg = $routeParts[0];
-            $this->controller = str_replace('-', '', $controllerNameOrg);
-
-            array_shift($routeParts);
-
-            $actionNameOrg = null;
-            if(! empty($routeParts[0])){
-                $actionNameOrg = $routeParts[0];
-                $this->action = str_replace('-', '', $actionNameOrg);
-
-                array_shift($routeParts);
-            }
-
-            $routeParts = array_merge($routeParts, $_GET);
-            $this->params = $routeParts;
-            $this->params['__ActionName']        = $this->action;
-            $this->params['__ActionNameOrg']     = $actionNameOrg;
-            $this->params['__ControllerName']    = $this->controller;
-            $this->params['__ControllerNameOrg'] = $controllerNameOrg;
-
+            $this->routeParts = explode('/', $route);
+            $this->setController();
+            $this->setAction();
+            $this->setParams();
         }
 
+    }
+
+    private function setController(){
+
+        $controllerNameOrg = $this->routeParts[0];
+        $this->controller = str_replace('-', '', $controllerNameOrg);
+
+        $this->params['__ControllerName']    = $this->controller;
+        $this->params['__ControllerNameOrg'] = $controllerNameOrg;
+
+        array_shift($this->routeParts);
+    }
+
+    private function setAction(){
+        $actionNameOrg = null;
+        if(! empty($this->routeParts[0])){
+            $actionNameOrg = $this->routeParts[0];
+            $this->action = str_replace('-', '', $actionNameOrg);
+            array_shift($this->routeParts);
+        }
+        $this->params['__ActionName']        = $this->action;
+        $this->params['__ActionNameOrg']     = $actionNameOrg;
+    }
+
+    private function setParams(){
+        $this->params  = array_merge($this->params, $this->routeParts, $_REQUEST);
     }
 
     public function getController(){

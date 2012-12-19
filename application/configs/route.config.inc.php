@@ -8,3 +8,4 @@
  */
 $routeConfig['index']   = true;
 $routeConfig['blog']    = true;
+$routeConfig['game']    = true;
