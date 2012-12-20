@@ -32,6 +32,18 @@ class elementGame
             array(
                 'search' => array('Yağmur', 'Toprak'),
                 'result' => 'Bitki'
+            ),
+            array(
+                'search' => array('Çamur', 'Bitki'),
+                'result' => 'Hayat'
+            ),
+            array(
+                'search' => array('Hayat', 'Toprak'),
+                'result' => 'İnsan'
+            ),
+            array(
+                'search' => array('İnsan', 'Toprak'),
+                'result' => 'Para'
             )
         );
     }
@@ -41,9 +53,29 @@ class elementGame
         foreach($this->data AS $recipie){
             $controlArray = array_diff($recipie['search'], $searchRecipie);
             if(count($controlArray) == 0){
+                $recipie['addIngredientList'] = $this->addIngredientList($recipie['result']);
                 return $recipie;
             }
         }
         return false;
+    }
+
+    public function getIngredientList() {
+        if(! isset($_SESSION['ingredientList'])){
+            $_SESSION['ingredientList'] = array();
+        }
+        return $_SESSION['ingredientList'];
+    }
+
+    protected function addIngredientList($ingredient){
+        if(! isset($_SESSION['ingredientList'])){
+            $_SESSION['ingredientList'] = array();
+        }
+        if(in_array($ingredient, $_SESSION['ingredientList'])) {
+            return false;
+        } else {
+            $_SESSION['ingredientList'][] = $ingredient;
+            return true;
+        }
     }
 }
