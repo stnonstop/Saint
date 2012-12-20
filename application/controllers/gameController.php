@@ -11,7 +11,7 @@ class gameController extends saint\controller\controllerAbstract
 
     public function indexAction()
     {
-        // TODO: Implement indexAction() method.
+
     }
 
     public function mixajaxAction(){

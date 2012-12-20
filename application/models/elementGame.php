@@ -28,6 +28,10 @@ class elementGame
             array(
                 'search' => array('Su', 'Hava'),
                 'result' => 'Yağmur'
+            ),
+            array(
+                'search' => array('Yağmur', 'Toprak'),
+                'result' => 'Bitki'
             )
         );
     }
@@ -37,9 +41,21 @@ class elementGame
         foreach($this->data AS $recipie){
             $controlArray = array_diff($recipie['search'], $searchRecipie);
             if(count($controlArray) == 0){
+                if($this->addIngredientList($recipie['result'])){
+                    $recipie['addIngredientList'] = true;
+                }
                 return $recipie;
             }
         }
         return false;
+    }
+
+    protected function addIngredientList($ingredient){
+        if(in_array($ingredient, $_SESSION['ingredientList'])) {
+            return false;
+        } else {
+            $_SESSION['ingredientList'][] = $ingredient;
+            return true;
+        }
     }
 }

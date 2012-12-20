@@ -153,8 +153,9 @@
                 success:function(data) {
                     $("#Message").html('');
                     if(data.success){
-
-                        $("#Game").append('<div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="'+data.result+'">'+data.result+'</label></div>');
+                        if(data.addIngredientList) {
+                            $("#Game").append('<div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="'+data.result+'">'+data.result+'</label></div>');
+                        }
                         $("#Message").append('<div class="alert alert-success"><a class="close" data-dismiss="alert">×</a><strong>Tebrikler!</strong> Tebrikler <strong>'+data.result+'</strong> elde ettiniz.</div>');
                     } else {
                         $("#Message").append('<div class="alert alert-fail"><a class="close" data-dismiss="alert">×</a><strong>Warning!</strong> Hiç bir şey bulmadınız</div>');
