@@ -14,6 +14,7 @@ class gameController extends saint\controller\controllerAbstract
         session_start();
         $elementGame = new \models\elementGame();
         $this->view->ingredientList = $elementGame->getIngredientList();
+        $this->view->ingredientCount = count($this->view->ingredientList);
     }
 
     public function mixajaxAction(){
