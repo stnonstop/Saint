@@ -104,10 +104,17 @@
                     <div class="span9"><br /><hr/></div>
                     <div class="span9" id="Message"></div>
                     <div class="span9"><br /><hr/></div>
-                    <div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="Ateş" name='element[0]'>Ateş</label></div>
-                    <div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="Hava" name='element[1]'>Hava</label></div>
-                    <div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="Toprak" name='element[2]'>Toprak</label></div>
-                    <div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="Su" name='element[3]'>Su</label></div>
+                    <div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="Ateş">Ateş</label></div>
+                    <div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="Hava">Hava</label></div>
+                    <div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="Toprak">Toprak</label></div>
+                    <div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="Su">Su</label></div>
+                    <?php
+                    foreach($ingredientList As $ingredient) {
+                    ?>
+                    <div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="<?= $ingredient ?>"><?= $ingredient ?></label></div>
+                    <?php
+                    }
+                    ?>
                 </div>
                 <div class="span3">
                     <div class="page-header">

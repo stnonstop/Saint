@@ -11,10 +11,13 @@ class gameController extends saint\controller\controllerAbstract
 
     public function indexAction()
     {
-
+        session_start();
+        $elementGame = new \models\elementGame();
+        $this->view->ingredientList = $elementGame->getIngredientList();
     }
 
     public function mixajaxAction(){
+        session_start();
         $this->view->setNoRender();
         $elementGame = new \models\elementGame();
         $mixtureResult = $elementGame->mixThem($this->userParams['element1'], $this->userParams['element2']);
@@ -24,8 +27,9 @@ class gameController extends saint\controller\controllerAbstract
         } else {
             $result['success'] = true;
             $result['result'] = $mixtureResult['result'];
+            $result['addIngredientList'] = $mixtureResult['addIngredientList'];
             $result['firstElement'] = $mixtureResult['search'][0];
-            $result['firstElement'] = $mixtureResult['search'][1];
+            $result['secondElement'] = $mixtureResult['search'][1];
             //echo $this->userParams['element1'].' ile '.$this->userParams['element2'] . ' birleştirip ' . $mixtureResult['result'] . ' elde ettiniz.';
         }
         echo json_encode($result);
