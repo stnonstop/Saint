@@ -28,6 +28,10 @@ class elementGame
             array(
                 'search' => array('Su', 'Hava'),
                 'result' => 'Yağmur'
+            ),
+            array(
+                'search' => array('Yağmur', 'Toprak'),
+                'result' => 'Bitki'
             )
         );
     }
