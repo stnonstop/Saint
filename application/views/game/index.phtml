@@ -70,7 +70,7 @@
                     <a class="brand" href="#"> Aziz DURMAZ </a>
                     <div class="pull-right">
                         <ul class="nav">
-                            <li class="active"><a href="/"><i class="icon-home"></i> Home</a></li>
+                            <li><a href="/"><i class="icon-home"></i> Home</a></li>
                             <li class="dropdown">
                                 <a href="/blog" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-pencil"></i> Blog</a>
                                 <ul class="dropdown-menu">
@@ -79,7 +79,7 @@
                                 </ul>
                             </li>
                             <li><a href="/download"><i class="icon-download"></i> Download</a></li>
-                            <li><a href="/game"><i class="icon-screenshot"></i> Game</a></li>
+                            <li  class="active"><a href="/game"><i class="icon-screenshot"></i> Game</a></li>
                         </ul>
                     </div>
                 </div>
@@ -92,7 +92,9 @@
     <div class="container">
         <br />
         <ul class="breadcrumb">
-            <li class="active">Home<span class="divider"></span></li>
+            <li><a href="/"> Home</a><span class="divider"></span></li>
+            <li>/<span class="divider"></span></li>
+            <li class="active">Game<span class="divider"></span></li>
         </ul>
         <div class="container-fluid">
             <div class="row-fluid">
@@ -110,9 +112,9 @@
                     <div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="Su">Su</label></div>
                     <?php
                     foreach($ingredientList As $ingredient) {
-                    ?>
-                    <div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="<?= $ingredient ?>"><?= $ingredient ?></label></div>
-                    <?php
+                        ?>
+                        <div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="<?= $ingredient ?>"><?= $ingredient ?></label></div>
+                        <?php
                     }
                     ?>
                 </div>
