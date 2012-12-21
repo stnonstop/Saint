@@ -17,6 +17,8 @@ class config
             $routeConfig = array();
             include APPLICATION_PATH . DIRECTORY_SEPARATOR . 'configs' . DIRECTORY_SEPARATOR . 'route.config.inc.php';
             self::$configs['route'] = $routeConfig;
+            include APPLICATION_PATH . DIRECTORY_SEPARATOR . 'configs' . DIRECTORY_SEPARATOR . 'db.config.inc.php';
+            self::$configs['db']    = $dbConfig;
         }
 
     }

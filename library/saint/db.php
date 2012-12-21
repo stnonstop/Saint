@@ -7,9 +7,12 @@
  * To change this template use File | Settings | File Templates.
  */
 namespace saint;
-
-class db extends \saint\db\dbAbstract
+class db
 {
+
+    public function __construct($db){
+        
+    }
 
     public function get($query)
     {
