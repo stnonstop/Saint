@@ -69,10 +69,16 @@ class elementGame
     }
 
     public function getIngredientList() {
+        if( $this->sessionContainer->ingredientList == null){
+            $this->sessionContainer->ingredientList = array();
+        }
         return $this->sessionContainer->ingredientList;
     }
 
     protected function addIngredientList($ingredient){
+        if( $this->sessionContainer->ingredientList == null){
+            $this->sessionContainer->ingredientList = array();
+        }
         if(in_array($ingredient, $this->sessionContainer->ingredientList)) {
             return false;
         } else {
