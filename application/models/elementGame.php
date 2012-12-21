@@ -11,7 +11,15 @@ class elementGame
 {
     protected $data;
 
-    public function __construct(){
+    /**
+     * @var \saint\session
+     */
+    protected $sessionContainer;
+
+    public function __construct(\saint\session $session){
+
+        $this->sessionContainer = $session;
+
         $this->data = array(
             array(
                 'search' => array('Toprak', 'Su'),
@@ -61,20 +69,14 @@ class elementGame
     }
 
     public function getIngredientList() {
-        if(! isset($_SESSION['ingredientList'])){
-            $_SESSION['ingredientList'] = array();
-        }
-        return $_SESSION['ingredientList'];
+        return $this->sessionContainer->ingredientList;
     }
 
     protected function addIngredientList($ingredient){
-        if(! isset($_SESSION['ingredientList'])){
-            $_SESSION['ingredientList'] = array();
-        }
-        if(in_array($ingredient, $_SESSION['ingredientList'])) {
+        if(in_array($ingredient, $this->sessionContainer->ingredientList)) {
             return false;
         } else {
-            $_SESSION['ingredientList'][] = $ingredient;
+            array_push($this->sessionContainer->ingredientList,$ingredient);
             return true;
         }
     }

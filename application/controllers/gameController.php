@@ -11,16 +11,16 @@ class gameController extends saint\controller\controllerAbstract
 
     public function indexAction()
     {
-        session_start();
-        $elementGame = new \models\elementGame();
+        $sessionContainer = new \saint\session();
+        $elementGame = new \models\elementGame($sessionContainer);
         $this->view->ingredientList = $elementGame->getIngredientList();
-        $this->view->ingredientCount = count($this->view->ingredientList);
+        //$this->view->ingredientCount = count($this->view->ingredientList);
     }
 
     public function mixajaxAction(){
-        session_start();
         $this->view->setNoRender();
-        $elementGame = new \models\elementGame();
+        $sessionContainer = new \saint\session();
+        $elementGame = new \models\elementGame($sessionContainer);
         $mixtureResult = $elementGame->mixThem($this->userParams['element1'], $this->userParams['element2']);
         $result = array();
         if($mixtureResult === false){
