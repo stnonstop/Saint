@@ -11,8 +11,11 @@ class gameController extends saint\controller\controllerAbstract
 
     public function indexAction()
     {
+        phpinfo();
         $sessionContainer = new \saint\session();
-        $elementGame = new \models\elementGame($sessionContainer);
+        $mongoDB = new \saint\db('mongo');
+        $elementGame = new \models\elementGame($sessionContainer, $mongoDB);
+        var_dump($mongoDB->get(array(),'assoc',0));
         $this->view->ingredientList = $elementGame->getIngredientList();
         //$this->view->ingredientCount = count($this->view->ingredientList);
     }
@@ -20,7 +23,8 @@ class gameController extends saint\controller\controllerAbstract
     public function mixajaxAction(){
         $this->view->setNoRender();
         $sessionContainer = new \saint\session();
-        $elementGame = new \models\elementGame($sessionContainer);
+        $mongoDB = new \saint\db('mongo');
+        $elementGame = new \models\elementGame($sessionContainer, $mongoDB);
         $mixtureResult = $elementGame->mixThem($this->userParams['element1'], $this->userParams['element2']);
         $result = array();
         if($mixtureResult === false){

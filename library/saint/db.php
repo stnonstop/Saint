@@ -33,7 +33,7 @@ class db extends db\dbAbstract
         $this->config = new config();
         if(! array_key_exists($this->dbName, self::$dbConnections)){
             $dbConfigList = $this->config->db;
-            self::$dbConnections = self::factory($this->dbName, $dbConfigList);
+            self::$dbConnections[$this->dbName] = self::factory($this->dbName, $dbConfigList);
         }
     }
 
@@ -44,7 +44,7 @@ class db extends db\dbAbstract
             throw new \Exception('Undefined database driver type');
         }
 
-        $className = 'db\\'.$dbConfigList[$dbName]['driverType'];
+        $className = '\\saint\\db\\'.$dbConfigList[$dbName]['driverType'];
         return new $className($dbName, $dbConfigList[$dbName]);
 
     }

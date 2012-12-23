@@ -10,7 +10,7 @@ namespace saint\db;
 class mongo extends dbAbstract
 {
     /**
-     * @var \MongoDB
+     * @var \Mongo
      */
     private $mongoDB = null;
 

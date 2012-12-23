@@ -39,7 +39,7 @@ class cache extends cache\cacheAbstract
         if(! in_array($layer, self::$cacheLayers)) {
             throw new \Exception('Invalid Cache Layer!');
         }
-        $cacheClass = 'cache\\'.$layer;
+        $cacheClass = '\\saint\\cache\\'.$layer;
         return new $cacheClass($options);
     }
 }
