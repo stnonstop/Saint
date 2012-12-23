@@ -10,11 +10,14 @@ namespace saint;
 class db
 {
 
-    public function __construct($db){
-        
+    public function __construct($dbName){
+        $config = new config();
+        if(empty($config->db[$dbName])){
+
+        }
     }
 
-    public function get($query)
+    public function get($query, $fetchType='assoc', $cacheTimeOut)
     {
         // TODO: Implement get() method.
     }
