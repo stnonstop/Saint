@@ -65,7 +65,7 @@ class elementGame
 
     public function mixThem($firstElement, $secondElement){
 
-        $query['collection'] = 'movies';
+        $query['collection'] = 'recipies';
         $query['query'] = array(
             '$OR:' => array(
                 array(

@@ -10,5 +10,5 @@
 $dbConfig['mongo']['driverType']    = 'mongo';
 $dbConfig['mongo']['serverName']    = 'localhost';
 $dbConfig['mongo']['serverPort']    = '27017';
-$dbConfig['mongo']['dbSchemaName']  = 'movieDB';
+$dbConfig['mongo']['dbSchemaName']  = 'elementalGame';
 $dbConfig['mongo']['cacheType']     = 'file';

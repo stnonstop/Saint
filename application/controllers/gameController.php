@@ -11,13 +11,12 @@ class gameController extends saint\controller\controllerAbstract
 
     public function indexAction()
     {
-        phpinfo();
         $sessionContainer = new \saint\session();
+
         $mongoDB = new \saint\db('mongo');
         $elementGame = new \models\elementGame($sessionContainer, $mongoDB);
-        var_dump($mongoDB->get(array(),'assoc',0));
         $this->view->ingredientList = $elementGame->getIngredientList();
-        //$this->view->ingredientCount = count($this->view->ingredientList);
+        $this->view->ingredientCount = count($this->view->ingredientList);
     }
 
     public function mixajaxAction(){

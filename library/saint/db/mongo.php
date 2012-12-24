@@ -43,6 +43,12 @@ class mongo extends dbAbstract
         if( ! $this->mongoDB) {
             $this->connect();
         }
+
+        if(! isset($query['collection'])) {
+            throw new \Exception ('Undefined mongo collection');
+            return false;
+        }
+
         $collection = new \MongoCollection($this->mongoDB, $query['collection']);
 
         if(! isset($sql['fields'])) {
