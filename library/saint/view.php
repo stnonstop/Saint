@@ -32,6 +32,14 @@ class view
     }
 
     /**
+     * @param $name
+     * @return mixed
+     */
+    public function __get($name){
+        return $this->variables[$name];
+    }
+
+    /**
      * Get Variables
      * @return array
      */

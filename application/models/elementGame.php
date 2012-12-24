@@ -16,10 +16,17 @@ class elementGame
      */
     protected $sessionContainer;
 
-    public function __construct(\saint\session $session){
+    /**
+     * @var \saint\db
+     */
+    protected $db;
+
+    public function __construct(\saint\session $session, \saint\db $db){
 
         $this->sessionContainer = $session;
+        $this->db = $db;
 
+        /*
         $this->data = array(
             array(
                 'search' => array('Toprak', 'Su'),
@@ -53,18 +60,33 @@ class elementGame
                 'search' => array('İnsan', 'Toprak'),
                 'result' => 'Para'
             )
-        );
+        );*/
     }
 
     public function mixThem($firstElement, $secondElement){
-        $searchRecipie = array($firstElement, $secondElement);
+
+        $query['collection'] = 'movies';
+        $query['query'] = array(
+            '$OR:' => array(
+                array(
+                    'search' => array($firstElement, $secondElement)
+                ),
+                array(
+                    'search' => array($secondElement, $firstElement)
+                )
+            )
+        );
+        $query['fields'] = 'result';
+        $result = $this->db->get($query, 'assoc', 180);
+        var_dump($result);
+        /*
         foreach($this->data AS $recipie){
             $controlArray = array_diff($recipie['search'], $searchRecipie);
             if(count($controlArray) == 0){
                 $recipie['addIngredientList'] = $this->addIngredientList($recipie['result']);
                 return $recipie;
             }
-        }
+        }*/
         return false;
     }
 

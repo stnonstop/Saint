@@ -11,15 +11,19 @@ class config
 {
 
     private static $configs = array();
+    public $cache;
 
     public function __construct(){
         if(! self::$configs) {
-            $routeConfig = array();
-            $dbConfig = array();
+            $routeConfig    = array();
+            $dbConfig       = array();
+            $cacheConfig    = array();
             include APPLICATION_PATH . DIRECTORY_SEPARATOR . 'configs' . DIRECTORY_SEPARATOR . 'route.config.inc.php';
             self::$configs['route'] = $routeConfig;
             include APPLICATION_PATH . DIRECTORY_SEPARATOR . 'configs' . DIRECTORY_SEPARATOR . 'db.config.inc.php';
             self::$configs['db']    = $dbConfig;
+            include APPLICATION_PATH . DIRECTORY_SEPARATOR . 'configs' . DIRECTORY_SEPARATOR . 'cache.config.inc.php';
+            self::$configs['cache']    = $cacheConfig;
         }
 
     }
