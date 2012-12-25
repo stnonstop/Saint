@@ -25,49 +25,13 @@ class elementGame
 
         $this->sessionContainer = $session;
         $this->db = $db;
-
-        /*
-        $this->data = array(
-            array(
-                'search' => array('Toprak', 'Su'),
-                'result' => 'Çamur'
-            ),
-            array(
-                'search' => array('Ateş', 'Su'),
-                'result' => 'Buhar'
-            ),
-            array(
-                'search' => array('Ateş', 'Toprak'),
-                'result' => 'Lav'
-            ),
-            array(
-                'search' => array('Su', 'Hava'),
-                'result' => 'Yağmur'
-            ),
-            array(
-                'search' => array('Yağmur', 'Toprak'),
-                'result' => 'Bitki'
-            ),
-            array(
-                'search' => array('Çamur', 'Bitki'),
-                'result' => 'Hayat'
-            ),
-            array(
-                'search' => array('Hayat', 'Toprak'),
-                'result' => 'İnsan'
-            ),
-            array(
-                'search' => array('İnsan', 'Toprak'),
-                'result' => 'Para'
-            )
-        );*/
     }
 
     public function mixThem($firstElement, $secondElement){
 
         $query['collection'] = 'recipies';
         $query['query'] = array(
-            '$OR:' => array(
+            '$or' => array(
                 array(
                     'search' => array($firstElement, $secondElement)
                 ),
@@ -76,18 +40,11 @@ class elementGame
                 )
             )
         );
-        $query['fields'] = 'result';
-        $result = $this->db->get($query, 'assoc', 180);
-        var_dump($result);
-        /*
-        foreach($this->data AS $recipie){
-            $controlArray = array_diff($recipie['search'], $searchRecipie);
-            if(count($controlArray) == 0){
-                $recipie['addIngredientList'] = $this->addIngredientList($recipie['result']);
-                return $recipie;
-            }
-        }*/
-        return false;
+        $query['fields'] = array('result'=>1, '_id' => 0);
+        $recipie = $this->db->get($query, 'assoc', 180);
+        $recipie['addIngredientList'] = $this->addIngredientList($recipie['result']);
+        return $recipie;
+
     }
 
     public function getIngredientList() {

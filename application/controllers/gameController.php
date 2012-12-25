@@ -32,9 +32,6 @@ class gameController extends saint\controller\controllerAbstract
             $result['success'] = true;
             $result['result'] = $mixtureResult['result'];
             $result['addIngredientList'] = $mixtureResult['addIngredientList'];
-            $result['firstElement'] = $mixtureResult['search'][0];
-            $result['secondElement'] = $mixtureResult['search'][1];
-            //echo $this->userParams['element1'].' ile '.$this->userParams['element2'] . ' birleştirip ' . $mixtureResult['result'] . ' elde ettiniz.';
         }
         echo json_encode($result);
     }

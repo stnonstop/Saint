@@ -11,7 +11,6 @@ class config
 {
 
     private static $configs = array();
-    public $cache;
 
     public function __construct(){
         if(! self::$configs) {

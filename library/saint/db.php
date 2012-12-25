@@ -83,7 +83,13 @@ class db extends db\dbAbstract
         return self::$dbConnections[$this->dbName]->getAffectedRows();
     }
 
+    public function getLastError()
+    {
+        return self::$dbConnections[$this->dbName]->getLastError();
+    }
+
     private  function getQueryCacheKey($query, $fetchType){
+        $query = serialize($query);
         return 'db_'.md5($query.'|'.$fetchType);
     }
 

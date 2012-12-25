@@ -10,7 +10,7 @@ namespace saint\db;
 class mongo extends dbAbstract
 {
     /**
-     * @var \Mongo
+     * @var \MongoDB
      */
     private $mongoDB = null;
 
@@ -46,7 +46,6 @@ class mongo extends dbAbstract
 
         if(! isset($query['collection'])) {
             throw new \Exception ('Undefined mongo collection');
-            return false;
         }
 
         $collection = new \MongoCollection($this->mongoDB, $query['collection']);
@@ -183,5 +182,10 @@ class mongo extends dbAbstract
     public function getAffectedRows()
     {
         return array('count' => $this->count, 'totalCount' => $this->totalCount);
+    }
+
+    public function getLastError()
+    {
+        return $this->mongoDB->lastError();
     }
 }

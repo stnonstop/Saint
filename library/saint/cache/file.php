@@ -54,7 +54,7 @@ class file extends cacheAbstract
         fwrite($fp, $value);
         fclose($fp);
         if(rename($tmpFile, $cacheFile)) {
-            if($_SERVER['argv'][0]) {
+            if(isset($_SERVER['argv'][0])) {
                 chown($cacheFile, 'www-data');
             }
             return true;

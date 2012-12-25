@@ -26,6 +26,7 @@ abstract class dbAbstract
     abstract public function execute($query);
     abstract public function getLastInsertedID();
     abstract public function getAffectedRows();
+    abstract public function getLastError();
 
     protected static function getConnection($dbName){
         if(array_key_exists($dbName, self::$connections)) {
