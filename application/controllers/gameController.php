@@ -19,6 +19,11 @@ class gameController extends saint\controller\controllerAbstract
         $this->view->ingredientCount = count($this->view->ingredientList);
     }
 
+    public function addrecipieAction()
+    {
+
+    }
+
     public function mixajaxAction(){
         $this->view->setNoRender();
         $sessionContainer = new \saint\session();
