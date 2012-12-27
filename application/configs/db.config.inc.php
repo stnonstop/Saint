@@ -12,3 +12,9 @@ $dbConfig['mongo']['serverName']    = 'localhost';
 $dbConfig['mongo']['serverPort']    = '27017';
 $dbConfig['mongo']['dbSchemaName']  = 'elementalGame';
 $dbConfig['mongo']['cacheType']     = 'file';
+
+$dbConfig['mongoGGGame']['driverType']    = 'mongo';
+$dbConfig['mongoGGGame']['serverName']    = 'localhost';
+$dbConfig['mongoGGGame']['serverPort']    = '27017';
+$dbConfig['mongoGGGame']['dbSchemaName']  = 'ggGame';
+$dbConfig['mongoGGGame']['cacheType']     = 'file';

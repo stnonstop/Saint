@@ -104,14 +104,45 @@
                     <div class="page-header">
                         <h1>Oyun</h1>
                     </div>
-                    <div class="span3 offset3"><button class="btn btn-warning btn-large" id="mix">Karýþtýr...</button></div><div class="span3"></div>
-                    <div class="span9"><br /><hr/></div>
+
                     <div class="span9" id="Message"></div>
                     <div class="span9"><br /><hr/></div>
-                    <div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="Ateþ">Ateþ</label></div>
-                    <div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="Hava">Hava</label></div>
-                    <div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="Toprak">Toprak</label></div>
-                    <div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="Su">Su</label></div>
+                    <div class="span3"><input class="input-small" type="text" id="firstElement" value="" placeholder=":Element 1..."></div>
+                    <div class="span3"><input class="input-small" type="text" id="secondElement" value="" placeholder=":Element 2..."></div>
+                    <div class="span3"><input class="input-small" type="text" id="newElement" value="" placeholder=":New Element..."></div>
+                    <div class="span9"><br /></div>
+                    <div class="span3 offset3"><button class="btn btn-info btn-large" id="add">Ekle...</button></div><div class="span3"></div>
+                    <div class="span9"><br /><hr/></div>
+                    <div class="span9">
+                        <br />
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>1. Element</th>
+                                    <th>2. Element</th>
+                                    <th>SonuÃ§ Elementi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ingredientList">
+                            <?php
+                            $i=0;
+                            foreach ($recipieList AS $recipie) {
+                                $i++;
+                            ?>
+                                <tr>
+                                    <td><?= $i ?></td>
+                                    <td><?= @$recipie['search'][0] ?></td>
+                                    <td><?= @$recipie['search'][1] ?></td>
+                                    <td><?= $recipie['result'] ?></td>
+                                </tr>
+                            <?php
+                            }
+                            ?>
+                            </tbody>
+                        </table>
+                        <input type="hidden" id='number' value="<?= $i ?>">
+                    </div>
                 </div>
                 <div class="span3">
                     <div class="page-header">
@@ -133,7 +164,37 @@
     </div>
 </footer>
 
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#add").click(function(){
+            var firstElement = '', secondElement = '', newElement = '';
+
+            firstElement = $("#firstElement").val();
+            secondElement = $("#secondElement").val();
+            newElement = $("#newElement").val();
+            $.ajax({
+                type:"POST",
+                data:{element1:firstElement, element2:secondElement, newElement:newElement},
+                dataType:"json",
+                url:"/game/addajax",
+                success:function(data) {
+                    $("#Message").html('');
+                    if(data.success){
+                        $("#ingredientList").append('<tr><td></td><td>'+data.element1+'</td><td>'+data.element2+'</td><td>'+data.newElement+'</td></tr>');
+                        $("#Message").append('<div class="alert alert-success"><a class="close" data-dismiss="alert">Ã—</a><strong>Tebrikler!</strong> ArtÄ±k eklediÄŸiniz '+data.element1+' ve '+data.element2+' elementlerinden <strong>'+data.newElement+'</strong> elde ediliyor.</div>');
+                    } else {
+                        if(data.existElement != '') {
+                            $("#Message").append('<div class="alert alert-fail"><a class="close" data-dismiss="alert">Ã—</a><strong>UyarÄ±!</strong> EklediÄŸiniz '+data.element1+' ve '+data.element2+' elementlerinden '+data.existElement+' elde ediliyor. </div>');
+                        } else {
+                            $("#Message").append('<div class="alert alert-fail"><a class="close" data-dismiss="alert">Ã—</a><strong>Warning!</strong> Hata oluÅŸtu</div>');
+                        }
+                    }
+                }
+            })
+        })
+    });
+</script>
 </body>
 </html>

@@ -13,7 +13,7 @@ class gameController extends saint\controller\controllerAbstract
     {
         $sessionContainer = new \saint\session();
 
-        $mongoDB = new \saint\db('mongo');
+        $mongoDB = new \saint\db('mongoGGGame');
         $elementGame = new \models\elementGame($sessionContainer, $mongoDB);
         $this->view->ingredientList = $elementGame->getIngredientList();
         $this->view->ingredientCount = count($this->view->ingredientList);
@@ -21,13 +21,17 @@ class gameController extends saint\controller\controllerAbstract
 
     public function addrecipieAction()
     {
+        $sessionContainer = new \saint\session();
 
+        $mongoDB = new \saint\db('mongoGGGame');
+        $elementGame = new \models\elementGame($sessionContainer, $mongoDB);
+        $this->view->recipieList = $elementGame->getRecipieList();
     }
 
     public function mixajaxAction(){
         $this->view->setNoRender();
         $sessionContainer = new \saint\session();
-        $mongoDB = new \saint\db('mongo');
+        $mongoDB = new \saint\db('mongoGGGame');
         $elementGame = new \models\elementGame($sessionContainer, $mongoDB);
         $mixtureResult = $elementGame->mixThem($this->userParams['element1'], $this->userParams['element2']);
         $result = array();
@@ -37,6 +41,32 @@ class gameController extends saint\controller\controllerAbstract
             $result['success'] = true;
             $result['result'] = $mixtureResult['result'];
             $result['addIngredientList'] = $mixtureResult['addIngredientList'];
+        }
+        echo json_encode($result);
+    }
+
+    public function addajaxAction(){
+        $this->view->setNoRender();
+        $sessionContainer = new \saint\session();
+        $mongoDB = new \saint\db('mongoGGGame');
+        $elementGame = new \models\elementGame($sessionContainer, $mongoDB);
+        if($this->userParams['element1'] == '' || $this->userParams['element2'] == '') {
+            $result['success'] = false;
+        } else {
+            $addResult = $elementGame->addRecipie($this->userParams['element1'], $this->userParams['element2'], $this->userParams['newElement']);
+            if($addResult['status'] == 'Added') {
+                $result['success'] = true;
+                $result['element1'] = $this->userParams['element1'];
+                $result['element2'] = $this->userParams['element2'];
+                $result['newElement'] = $this->userParams['newElement'];
+            } elseif($addResult['status'] == 'Already exist'){
+                $result['success'] = false;
+                $result['element1'] = $this->userParams['element1'];
+                $result['element2'] = $this->userParams['element2'];
+                $result['existElement'] = $addResult['element'];
+            } else {
+                $result['success'] = false;
+            }
         }
         echo json_encode($result);
     }
