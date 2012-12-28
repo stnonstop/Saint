@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <title>Saint Framework Index Page</title>
+    <meta charset="utf-8">
+    <link href="/css/bootstrap.css" media="screen" rel="stylesheet" />
+    <style type="text/css">
+        html,
+        body{
+            height: 100%;
+        }
+        #push,
+        #footer {
+            height: 60px;
+        }
+        #footer {
+            position: relative;
+            background-color: #f5f5f5;
+        }
+        #wrap {
+            min-height: 100%;
+            height: auto !important;
+            height: 100%;
+            margin-top: 100px;
+            /* Negative indent footer by it's height */
+            margin: 0 auto -60px;
+        }
+        .navbar-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            margin-top: 20px;
+            margin-bottom: -90px;
+        }
+        .carouselImg {
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            height: 300px;
+        }
+        @media (max-width: 979px) {
+            .carouselImg {
+                height: 220px;
+            }
+        }
+        @media (max-width: 767px) {
+            #footer {
+                margin-left: -20px;
+                margin-right: -20px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .carouselImg {
+                height: 180px;
+            }
+        }
+        .container .credit {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+<header id='header'>
+    <nav class="navbar-wrapper ">
+        <div class="container">
+            <div class="navbar navbar-inverse">
+                <div class="navbar-inner">
+                    <a class="brand" href="#"> Aziz DURMAZ </a>
+                    <div class="pull-right">
+                        <ul class="nav">
+                            <li><a href="/"><i class="icon-home"></i> Home</a></li>
+                            <li class="dropdown">
+                                <a href="/blog" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-pencil"></i> Blog</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/blog/dependecyInjection">Aziz</a></li>
+                                    <li class="last"><a href="/blog/dependecyInjection">Dependecy Injection</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/download"><i class="icon-download"></i> Download</a></li>
+                            <li  class="active"><a href="/game"><i class="icon-screenshot"></i> Game</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<section id="wrap">
+    <img src="/img/italy.jpg" alt="" class="carouselImg">
+    <div class="container">
+        <br />
+        <ul class="breadcrumb">
+            <li><a href="/"> Home</a><span class="divider"></span></li>
+            <li>/<span class="divider"></span></li>
+            <li class="active">Game<span class="divider"></span></li>
+        </ul>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span9" id="Game">
+                    <div class="page-header">
+                        <h1>Oyun</h1>
+                    </div>
+                    <div class="span3 offset3"><button class="btn btn-warning btn-large" id="mix">Karıştır...</button></div><div class="span3"></div>
+                    <div class="span9"><br /><hr/></div>
+                    <div class="span9" id="Message"></div>
+                    <div class="span9"><br /><hr/></div>
+                    <div class="span9 border">
+                        <div class="span1 alert alert-error">6</div>
+                        <div class="span1 alert alert-error">13</div>
+                        <div class="span1 alert alert-info">&nbsp;</div>
+                        <div class="span1 alert alert-error">33</div>
+                        <div class="span1 alert alert-info">&nbsp;</div>
+                        <div class="span1 alert alert-error">52</div>
+                        <div class="span1 alert alert-info">&nbsp;</div>
+                        <div class="span1 alert alert-error">72</div>
+                        <div class="span1 alert alert-info">&nbsp;</div>
+                        <div class="span1 alert alert-info">&nbsp;</div>
+                        <div class="span1 alert alert-error">18</div>
+                        <div class="span1 alert alert-error">22</div>
+                        <div class="span1 alert alert-info">&nbsp;</div>
+                        <div class="span1 alert alert-error">46</div>
+                        <div class="span1 alert alert-info">&nbsp;</div>
+                        <div class="span1 alert alert-error">65</div>
+                        <div class="span1 alert alert-info">&nbsp;</div>
+                        <div class="span1 alert alert-error">85</div>
+                        <div class="span1 alert alert-error">8</div>
+                        <div class="span1 alert alert-info">&nbsp;</div>
+                        <div class="span1 alert alert-error">29</div>
+                        <div class="span1 alert alert-error">37</div>
+                        <div class="span1 alert alert-info">&nbsp;</div>
+                        <div class="span1 alert alert-error">57</div>
+                        <div class="span1 alert alert-info">&nbsp;</div>
+                        <div class="span1 alert alert-error">76</div>
+                        <div class="span1 alert alert-info">&nbsp;</div>
+                    </div>
+                </div>
+                <div class="span3">
+                    <div class="page-header">
+                        <h3>Heyoo</h3>
+                        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean a leo nec justo convallis malesuada ut sit amet nisi. Vestibulum nulla dui, lacinia et mollis ac, porttitor sed tellus.
+                            Vestibulum vel lorem ac odio viverra eleifend. Vivamus ac fermentum enim. Phasellus sapien massa, pulvinar non scelerisque non, commodo et erat. Phasellus lacinia erat lacinia nibh mollis scelerisque.
+                            Phasellus mauris dolor, suscipit id tincidunt ultrices, pharetra vel quam.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="push"></div>
+    </div>
+</section>
+
+<footer id="footer">
+    <div class="container">
+        <p class="muted credit">St.Nonstop : Aziz DURMAZ (Software Development Supervisor - GittiGidiyor Ebay)<span class="pull-right">2012</span></p>
+    </div>
+</footer>
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#mix").click(function(){
+
+        })
+    });
+    function insertMixElement( checkbox ){
+
+    }
+</script>
+
+</body>
+</html>

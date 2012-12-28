@@ -90,6 +90,23 @@ class elementGame
         $this->db->execute($query);
     }
 
+    public function setRecipieAll(){
+        $query['collection'] = 'recipies';
+        $query['data'] = array(
+            'result' => 'İnternet'
+        );
+        $this->db->execute($query);
+        $query['data'] = array(
+            'result' => 'İnsan'
+        );
+        $this->db->execute($query);
+        $query['data'] = array(
+            'result' => 'Alış-veriş'
+        );
+        $this->db->execute($query);
+        exit;
+    }
+
     protected function addIngredientList($ingredient){
         if( $this->sessionContainer->ingredientList == null){
             $this->sessionContainer->ingredientList = array();
@@ -107,6 +124,15 @@ class elementGame
             $this->sessionContainer->ingredientList = array();
         }
         return $this->sessionContainer->ingredientList;
+    }
+
+    public function starterIngredientList(){
+        $query['collection'] = 'recipies';
+        $query['query'] = array(
+            'search' => null
+        );
+        $query['fields'] = array('result'=>1, '_id' => 0);
+        return $this->db->get($query, 'assocArray', 180);
     }
 
     protected function getIngredient($element){

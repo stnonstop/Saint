@@ -106,11 +106,12 @@
                     <div class="span9"><br /><hr/></div>
                     <div class="span9" id="Message"></div>
                     <div class="span9"><br /><hr/></div>
-                    <div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="Ateş">Ateş</label></div>
-                    <div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="Hava">Hava</label></div>
-                    <div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="Toprak">Toprak</label></div>
-                    <div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="Su">Su</label></div>
                     <?php
+                    foreach($starter AS $ingredient) {
+                    ?>
+                        <div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="<?= $ingredient['result']?>"><?= $ingredient['result']?></label></div>
+                    <?php
+                    }
                     foreach($ingredientList As $ingredient) {
                         ?>
                         <div class="span3 img-polaroid"><label class="checkbox" ><input type="checkbox" value="<?= $ingredient ?>"><?= $ingredient ?></label></div>
