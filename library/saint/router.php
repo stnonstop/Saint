@@ -12,7 +12,7 @@ class router
     /**
      * @var array();
      */
-    private $routeParts;
+    private $routeParts = array();
     /**
      * Controller Name
      * @var string
@@ -39,8 +39,8 @@ class router
             $this->routeParts = explode('/', $route);
             $this->setController();
             $this->setAction();
-            $this->setParams();
         }
+        $this->setParams();
 
     }
 

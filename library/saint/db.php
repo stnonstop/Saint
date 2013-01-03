@@ -24,7 +24,7 @@ class db extends db\dbAbstract
      */
     private static $cache;
 
-    private static $dbDrivers = array('mongo','mysql');
+    private static $dbDrivers = array('mongo', 'mysql', 'oracle');
 
     protected $dbName;
 

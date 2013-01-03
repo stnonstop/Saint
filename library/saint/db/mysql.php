@@ -60,7 +60,7 @@ class mysql extends dbAbstract
                 }
                 break;
             default :
-                throw new Exception ('Undefined fetch mode');
+                throw new \Exception ('Undefined fetch mode');
                 break;
         }
         return $result;
@@ -74,7 +74,7 @@ class mysql extends dbAbstract
         $result = $this->connection->query($query);
         if(mysqli_error($this->connection)){
             $result = null;
-            throw new Exception('MySQL Query Error ('.mysqli_errno($this->connection).') '.mysqli_error($this->connection));
+            throw new \Exception('MySQL Query Error ('.mysqli_errno($this->connection).') '.mysqli_error($this->connection));
         }
         return $result;
     }
