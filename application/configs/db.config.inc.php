@@ -18,3 +18,12 @@ $dbConfig['mongoGGGame']['serverName']    = 'localhost';
 $dbConfig['mongoGGGame']['serverPort']    = '27017';
 $dbConfig['mongoGGGame']['dbSchemaName']  = 'ggGame';
 $dbConfig['mongoGGGame']['cacheType']     = 'file';
+
+$dbConfig['oracle']['driverType']   = 'oracle';
+$dbConfig['oracle']['serverName']   = 'localhost';
+$dbConfig['oracle']['userName']     = 'username';
+$dbConfig['oracle']['password']     = 'password';
+$dbConfig['oracle']['SID']          = 'SID';
+$dbConfig['oracle']['cacheType']    = 'file';
+$dbConfig['oracle']['charSet']      = 'WE8ISO8859P9';
+#$dbConfig['oracle']['charSet']      = null;
